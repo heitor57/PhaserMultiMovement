@@ -1,0 +1,10 @@
+#!/bin/bash
+echo $(pwd)
+for file in *.tmx
+do
+	SUB=$(echo $file | cut -d'.' -f 1)
+	tiled --export-map json $file $SUB.json
+	tmxrasterizer $file $SUB.png
+done
+
+time
